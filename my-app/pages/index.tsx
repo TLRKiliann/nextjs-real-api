@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Image from 'next/image'
 //import styles from '@/styles/Home.module.css'
@@ -12,6 +13,13 @@ type DataProps = {
 }
 
 export default function Home({data}: DataProps) {
+  const router = useRouter() as any
+
+  const handleClick = (id: number) => {
+    console.log("click")
+    router.push(`/posts/${id}`)
+  }
+
   return (
     <>
       <Head>
@@ -25,9 +33,9 @@ export default function Home({data}: DataProps) {
           <h2>Data from typicode</h2>
             {data?.map((post: any) => (
               <div key={post.id}>      
-                <p>{post.id}</p>
-                <p>{post.title}</p>
-                <p></p>
+                <p>{post?.id}</p>
+                <p>{post?.title}</p>
+                <button type="button" onClick={() => handleClick(post.id)}>Click</button>
               </div>
             ))}
         </div>
@@ -39,7 +47,6 @@ export default function Home({data}: DataProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10");
   const data = await response.json();
-  console.log(data);
   return {
     props: {
       data: data,
