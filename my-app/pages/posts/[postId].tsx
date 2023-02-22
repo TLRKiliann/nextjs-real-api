@@ -1,22 +1,27 @@
-import { GetStaticProps } from 'next'
+import { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 
 type PostProps = {
   post: {
     id: number | null
+    title: string
   }
 }
 
-const PostId:React.FC = ({ post }: PostProps) => {
+const PostId:React.FC = ({ post, id, title }: PostProps) => {
+
   const router = useRouter() as any
 
   const handleClick = () => {
     router.replace("/")
-  }
+  };
+  
   return (
     <div>
       <div>
-        <p>{post?.id}</p>
+        <p>ID: {post?.id} </p>
+        <p>Title: {post?.title}</p> 
+        <p>Body: {post?.body}</p>
         <button
           type="button"
           onClick={handleClick}>Go back to home
@@ -24,42 +29,34 @@ const PostId:React.FC = ({ post }: PostProps) => {
       </div>
     </div>
   )
-}
-export default PostId
+};
+export default PostId;
 
 
-/*export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch();
-  const data = await response.json()
-  const paths = data.map((post: any) => {
-    return {
-      params: {PostId: `${post.id}`}
-    }
-  })
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [
-      params: {
-        postId : '1',
+      {
+        params: { postId : '1' },
       },
-      params: {
-        postId : '1',
+      {
+        params: { postId : '2' },
       },
-      params: {
-        postId : '1',
+      {
+        params: { postId : '3' },
       }
     ], fallback: true
   }
-}*/
-/*
+};
+
 export const getStaticProps: GetStaticProps = async (context) => {
   const {params} = context
   console.log(params)
-  const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
   const data = await response.json()
   return {
     props: {
-      data: data,
+      post: data,
     }
   }
-}
-*/
+};

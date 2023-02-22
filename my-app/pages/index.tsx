@@ -1,8 +1,7 @@
 import { GetStaticProps } from 'next'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
-//import styles from '@/styles/Home.module.css'
 
 type DataProps = {
   data: {
@@ -13,13 +12,6 @@ type DataProps = {
 }
 
 export default function Home({data}: DataProps) {
-  const router = useRouter() as any
-
-  const handleClick = (id: number) => {
-    console.log("click")
-    router.push(`/posts/${id}`)
-  }
-
   return (
     <>
       <Head>
@@ -35,7 +27,7 @@ export default function Home({data}: DataProps) {
               <div key={post.id}>      
                 <p>{post?.id}</p>
                 <p>{post?.title}</p>
-                <button type="button" onClick={() => handleClick(post.id)}>Click</button>
+                <Link href={`/posts/${post.id}`}>{post.id} {post.title}</Link>
               </div>
             ))}
         </div>
