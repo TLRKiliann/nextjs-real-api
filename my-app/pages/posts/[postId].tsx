@@ -1,7 +1,13 @@
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
-const PostId:React.FC = () => {
+type PostProps = {
+  post: {
+    id: number | null
+  }
+}
+
+const PostId:React.FC = ({ post }: PostProps) => {
   const router = useRouter() as any
 
   const handleClick = () => {
@@ -10,13 +16,17 @@ const PostId:React.FC = () => {
   return (
     <div>
       <div>
-        <p>{post.id}</p>
-        <button type="button" onClick={handleClick}>Go back to home</button>
+        <p>{post?.id}</p>
+        <button
+          type="button"
+          onClick={handleClick}>Go back to home
+        </button>
       </div>
     </div>
   )
 }
 export default PostId
+
 
 /*export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch();
