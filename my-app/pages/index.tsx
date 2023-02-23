@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -12,6 +13,12 @@ type DataProps = {
 }
 
 export default function Home({data}: DataProps) {
+  const router = useRouter() as any
+
+  const handleClick = () => {
+    router.push('/news')
+  }
+
   return (
     <>
       <Head>
@@ -28,6 +35,7 @@ export default function Home({data}: DataProps) {
                 <p>{post?.id}</p>
                 <p>{post?.title}</p>
                 <Link href={`/posts/${post.id}`}>{post.id} {post.title}</Link>
+                <button type='button' onClick={handleClick}>news</button>
               </div>
             ))}
         </div>
