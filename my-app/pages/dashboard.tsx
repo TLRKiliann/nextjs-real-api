@@ -24,12 +24,11 @@ const Dashboard:React.FC = () => {
 
   return (
     <div>
-      <h2>{dashboardData.posts}</h2>
-      <h2>{dashboardData.likes}</h2>
-      <h2>{dashboardData.followers}</h2>
-      <h2>{dashboardData.following}</h2>
+      <h2>Posts: {dashboardData.posts}</h2>
+      <h2>Likes: {dashboardData.likes}</h2>
+      <h2>Followers: {dashboardData.followers}</h2>
+      <h2>Following: {dashboardData.following}</h2>
     </div>
   )
-
 }
 export default Dashboard
