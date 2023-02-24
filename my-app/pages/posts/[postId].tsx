@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 type PostProps = {
   post: {
@@ -13,20 +14,29 @@ const PostId = ({ post }: PostProps) => {
 
   const router = useRouter() as any
 
-  const handleClick = () => {
+  const handleBackHome = () => {
     router.replace("/")
   };
   
   return (
     <div>
+
+      <Head>
+        <title>Post_id</title>
+        <meta name="description" content="Post_id page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <div>
         <p>ID: {post?.id} </p>
         <p>Title: {post?.title}</p> 
         <p>Body: {post?.body}</p>
         <button
           type="button"
-          onClick={handleClick}>Go back to home
+          onClick={handleBackHome}>Go back to home
         </button>
+        <hr />
       </div>
     </div>
   )

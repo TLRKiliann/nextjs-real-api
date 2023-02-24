@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Head from 'next/head'
 
 const Dashboard:React.FC = () => {
 
@@ -24,6 +25,14 @@ const Dashboard:React.FC = () => {
 
   return (
     <div>
+
+      <Head>
+        <title>Dashboard</title>
+        <meta name="description" content="Dashboard page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <h2>Posts: {dashboardData.posts}</h2>
       <h2>Likes: {dashboardData.likes}</h2>
       <h2>Followers: {dashboardData.followers}</h2>

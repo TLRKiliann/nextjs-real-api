@@ -1,4 +1,5 @@
 import useSWR from 'swr'
+import Head from 'next/head'
 
 const fetcher = async () => {
   const response = await fetch('http://localhost:4000/dashboard')
@@ -19,6 +20,14 @@ const DashboardSWR = () => {
 
   return (
     <div>
+
+      <Head>
+        <title>Dashboard-SWR</title>
+        <meta name="description" content="Dashboard-SWR page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <h2>Posts: {data.posts}</h2>
       <h2>Likes: {data.likes}</h2>
       <h2>Followers: {data.followers}</h2>
