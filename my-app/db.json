@@ -5,6 +5,26 @@
     "followers": 20,
     "following": 50
   },
+  "events": [
+    {
+      "id": 1,
+      "article": "Article 1",
+      "location": "Switzerland",
+      "category": "biology"
+    },
+    {
+      "id": 2,
+      "article": "Article 2",
+      "location": "USA",
+      "category": "chemistery"
+    },
+    {
+      "id": 3,
+      "article": "Article 3",
+      "location": "France",
+      "category": "biology"
+    }
+  ],
   "news": [
     {
       "id": 1,
