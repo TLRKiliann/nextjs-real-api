@@ -19,6 +19,10 @@ export default function Home({data}: DataProps) {
     router.push('/news')
   }
 
+  const handleDash = () => {
+    router.push('/dashboard')
+  }
+
   return (
     <>
       <Head>
@@ -30,12 +34,19 @@ export default function Home({data}: DataProps) {
       <main>
         <div>
           <h2>Data from typicode</h2>
+          <button type="button" onClick={handleDash}>
+            Dashboard
+          </button>
             {data?.map((post: any) => (
               <div key={post.id}>      
                 <p>{post?.id}</p>
                 <p>{post?.title}</p>
-                <Link href={`/posts/${post.id}`}>{post.id} {post.title}</Link>
-                <button type='button' onClick={handleClick}>news</button>
+                <Link href={`/posts/${post.id}`}>
+                  {post.id} {post.title}
+                </Link>
+                <button type='button' onClick={handleClick}>
+                  news
+                </button>
               </div>
             ))}
         </div>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 type ArticlesProps = {
   articles: {
-    any: any
+    map: any
     id: number
     title: string
     description: string
@@ -11,7 +11,7 @@ type ArticlesProps = {
   }
 }
 
-const NewArticles:React.FC = ({ articles }: ArticlesProps) => {
+const NewArticles = ({ articles }: ArticlesProps) => {
   return (
     <div>
       <h1>List of News Articles</h1>

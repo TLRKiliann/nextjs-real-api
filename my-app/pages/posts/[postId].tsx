@@ -5,10 +5,11 @@ type PostProps = {
   post: {
     id: number | null
     title: string
+    body: string
   }
 }
 
-const PostId:React.FC = ({ post, id, title }: PostProps) => {
+const PostId = ({ post }: PostProps) => {
 
   const router = useRouter() as any
 
@@ -49,9 +50,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const {params} = context
-  console.log(params)
+export const getStaticProps: GetStaticProps = async (context: any) => {
+  const { params } = context
   const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
   const data = await response.json()
   return {

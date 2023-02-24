@@ -1,16 +1,17 @@
 import { GetServerSideProps } from 'next'
 
 type ArticlesProps = {
-  category: string
+  category: any
   articles: {
+    map: any
     id: number
     title: string
     description: string
-    category: category
+    category: string
   }
 }
 
-const Articles:React.FC = ({ articles, category }: ArticleProps) => {
+const Articles = ({ articles, category }: ArticlesProps) => {
   return (
     <div>
       <h2>Article category: {category}</h2>
@@ -30,7 +31,7 @@ export default Articles
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params } = context
-  const { category } = params
+  const category: any = params
   const response = await fetch(`http://localhost:4000/news?category=${category}`)
   const data = await response.json()
   return {
