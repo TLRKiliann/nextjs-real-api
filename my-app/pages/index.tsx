@@ -2,7 +2,8 @@ import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import Image from 'next/image'
+//import Image from 'next/image'
+import styles from '@/styles/Home.module.scss'
 
 type DataProps = {
   data: {
@@ -12,7 +13,7 @@ type DataProps = {
   }
 }
 
-export default function Home({data}: DataProps) {
+export default function Home({ data }: DataProps) {
   const router = useRouter() as any
 
   const handleClick = () => {
@@ -21,6 +22,10 @@ export default function Home({data}: DataProps) {
 
   const handleDash = () => {
     router.push('/dashboard')
+  }
+
+  const handleEvents = () => {
+    router.push('/events')
   }
 
   return (
@@ -34,19 +39,33 @@ export default function Home({data}: DataProps) {
       <main>
         <div>
           <h2>Data from typicode</h2>
+
           <button type="button" onClick={handleDash}>
             Dashboard
           </button>
+
+          <button type="button" onClick={handleEvents}>
+            Events
+          </button>
+
+          <hr />
             {data?.map((post: any) => (
-              <div key={post.id}>      
+              <div key={post?.id}>      
                 <p>{post?.id}</p>
                 <p>{post?.title}</p>
-                <Link href={`/posts/${post.id}`}>
-                  {post.id} {post.title}
-                </Link>
-                <button type='button' onClick={handleClick}>
-                  news
-                </button>
+                <div className={styles.linkbtnhome}>
+                  <Link href={`/posts/${post.id}`}>
+                    {post.id} {post.title}
+                  </Link>
+                  <button
+                    type='button'
+                    onClick={handleClick}
+                    className={styles.btnpost}
+                  >
+                    news
+                  </button>
+                </div>
+                <hr />
               </div>
             ))}
         </div>
