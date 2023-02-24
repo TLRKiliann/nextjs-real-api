@@ -29,9 +29,9 @@ const Articles = ({ articles, category }: ArticlesProps) => {
 }
 export default Articles
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params } = context
-  const category: any = params
+export const getServerSideProps: GetServerSideProps = async (context: any) => {
+  const { params }: any = context
+  const { category }: any = params
   const response = await fetch(`http://localhost:4000/news?category=${category}`)
   const data = await response.json()
   return {
