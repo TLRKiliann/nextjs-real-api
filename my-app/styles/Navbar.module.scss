@@ -1,0 +1,33 @@
+@import 'fonts.scss';
+@import 'colors.scss';
+
+.navbar {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  .ulnavbar {
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: $dodgerblue;
+    .linavbar {
+      list-style: none;
+      .anavbar {
+        text-decoration: none;
+        font-family: $notonewa_font;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: $whitesmoke;
+        &:hover {
+          color: orange;
+        }
+      }
+    }
+  }
+}
