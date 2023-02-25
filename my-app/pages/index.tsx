@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import type { NextPage } from "next";
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -13,7 +14,7 @@ type DataProps = {
   }
 }
 
-export default function Home({ data }: DataProps) {
+const Home: NextPage = ({ data }: DataProps) => {
   const router = useRouter() as any
 
   const handleClick = () => {
@@ -36,7 +37,8 @@ export default function Home({ data }: DataProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+
+      <main className={styles.main}>
         <div>
           <h2>Data from typicode</h2>
 
@@ -73,6 +75,7 @@ export default function Home({ data }: DataProps) {
     </>
   )
 }
+export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10");
