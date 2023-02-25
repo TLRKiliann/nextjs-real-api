@@ -1,11 +1,15 @@
 @import 'colors.scss';
 
-.linkbtnhome {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  .btnpost {
-    width: 60px;
-    color: $blue;
+.main {
+  position: relative;
+  top: 20px;
+  .linkbtnhome {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    .btnpost {
+      width: 60px;
+      color: $blue;
+    }
   }
 }
