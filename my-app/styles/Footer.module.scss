@@ -1,0 +1,17 @@
+@import 'fonts.scss';
+@import 'colors.scss';
+
+.footer {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: $dodgerblue;
+  border-top: 1px solid slateblue;
+  color: $whitesmoke;
+}
