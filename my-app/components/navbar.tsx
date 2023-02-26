@@ -2,8 +2,7 @@ import styles from '@/styles/Navbar.module.scss'
 
 const Navbar = () => {
   return (
-    <div 
-      className={styles.navbar}>
+    <div className={styles.navbar}>
       <div className={styles.ulnavbar}>
         <li className={styles.linavbar}>
           <a href={"/"} className={styles.anavbar}>
