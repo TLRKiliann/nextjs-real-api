@@ -13,7 +13,7 @@ type DataProps = {
   }
 }
 
-const Home:React.FC = ({ data }: DataProps) => {
+const Home = ({ data }: DataProps) => {
   const router = useRouter() as any
 
   const handleClick = () => {
