@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import styles from '@/styles/Events.module.scss'
 
 type EnventListProps = {
   eventList: {
@@ -29,7 +30,7 @@ const EventList = ({ eventList }: EnventListProps) => {
     router.push('/')
   }
   return (
-    <div>
+    <>
       <Head>
         <title>Events</title>
         <meta name="description" content="Events page" />
@@ -37,30 +38,32 @@ const EventList = ({ eventList }: EnventListProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {events.map((event: any) => (
-        <div key={event.id}> 
-          <h2>{event.article}</h2>
-          <h2>{event.location}</h2>
-          <h2>{event.category}</h2>
-          {isSwitched ? (
-            <button
-              type="button"
-              onClick={() => fetchByCategory(event.category)}>
-              Choose this category
-            </button>
-            ) : (
-            <button
-              type='button'
-              onClick={handleBackHome}
-            >
-              Return
-            </button>
-            )
-          }
-          <hr />
-        </div>
-      ))}
-    </div>
+      <div className={styles.events}>
+        {events.map((event: any) => (
+          <div key={event.id}> 
+            <h2>{event.article}</h2>
+            <h2>{event.location}</h2>
+            <h2>{event.category}</h2>
+            {isSwitched ? (
+              <button
+                type="button"
+                onClick={() => fetchByCategory(event.category)}>
+                Choose this category
+              </button>
+              ) : (
+              <button
+                type='button'
+                onClick={handleBackHome}
+              >
+                Return
+              </button>
+              )
+            }
+            <hr />
+          </div>
+        ))}
+      </div>
+    </>
   )
 }
 export default EventList

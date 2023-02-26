@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next'
-import type { NextPage } from "next";
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -14,7 +13,7 @@ type DataProps = {
   }
 }
 
-const Home: NextPage = ({ data }: DataProps) => {
+const Home:React.FC = ({ data }: DataProps) => {
   const router = useRouter() as any
 
   const handleClick = () => {

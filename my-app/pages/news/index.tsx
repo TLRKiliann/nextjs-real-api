@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import Head from 'next/head'
+import styles from '@/styles/News.module.scss'
 
 type ArticlesProps = {
   articles: {
@@ -14,7 +15,7 @@ type ArticlesProps = {
 
 const NewArticles = ({ articles }: ArticlesProps) => {
   return (
-    <div>
+    <>
 
       <Head>
         <title>News</title>
@@ -23,15 +24,18 @@ const NewArticles = ({ articles }: ArticlesProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>List of News Articles</h1>
-      {articles.map((article: any)=> (
-        <div key={article.id}>
-          <Link href={`/news/${article.category}`}>{article.title}</Link>
-          <p>{article.category}</p>
-          <hr />
-        </div>
-      ))}
-    </div>
+      <div className={styles.news}>
+        <h1>List of News Articles</h1>
+        {articles.map((article: any)=> (
+          <div key={article.id}>
+            <Link href={`/news/${article.category}`}>{article.title}</Link>
+            <p>{article.category}</p>
+            <hr />
+          </div>
+        ))}
+      </div>
+
+    </>
   )
 }
 export default NewArticles

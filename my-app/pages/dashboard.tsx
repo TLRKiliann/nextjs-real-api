@@ -24,7 +24,7 @@ const Dashboard:React.FC = () => {
   }
 
   return (
-    <div>
+    <>
 
       <Head>
         <title>Dashboard</title>
@@ -33,11 +33,15 @@ const Dashboard:React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h2>Posts: {dashboardData.posts}</h2>
-      <h2>Likes: {dashboardData.likes}</h2>
-      <h2>Followers: {dashboardData.followers}</h2>
-      <h2>Following: {dashboardData.following}</h2>
-    </div>
+      <div style={{marginTop: '90px'}}>
+        <h2>Dashboard</h2>
+        <h3>Posts: {dashboardData.posts}</h3>
+        <h3>Likes: {dashboardData.likes}</h3>
+        <h3>Followers: {dashboardData.followers}</h3>
+        <h3>Following: {dashboardData.following}</h3>
+      </div>
+
+    </>
   )
 }
 export default Dashboard
